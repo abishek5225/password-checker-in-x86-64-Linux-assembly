@@ -21,5 +21,15 @@ _start:
     mov rdx, prompt_len
     syscall
 
+    ;code to read input
+    mov rax, 0;read
+    mov rdi, 0;stdin
+    mov rsi, buffer
+    mov rdx, 32
+    syscall
 
 
+  ;exit code
+  mov rax, 60
+  xor rdi, 0
+  syscall
