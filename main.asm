@@ -15,4 +15,11 @@ section .text
   global _start
 
 _start:
+    mov rax, 1 ;write
+    mov rdi, 1;stdout
+    mov rsi, prompt
+    mov rdx, prompt_len
+    syscall
+
+
 
