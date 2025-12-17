@@ -28,8 +28,31 @@ _start:
     mov rdx, 32
     syscall
 
+ mov r10, rax
+ dec r10
 
-  ;exit code
-  mov rax, 60
-  xor rdi, 0
-  syscall
+ cmp r10, 8
+ jl weak_password
+
+
+strong_password:
+mov rax, 1
+mov rdi, 1
+mov rsi, strong_msg
+mov rdx, strong_msg_len
+syscall
+jmp exit_code
+
+weak_password:
+mov rax, 1
+mov rdi, 1
+mov rsi, weak_msg
+mov rdx, weak_len
+syscall
+
+
+ ;exit code
+ exit_code:
+ mov rax, 60
+ xor rdi, 0
+ syscall
